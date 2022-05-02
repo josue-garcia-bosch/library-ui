@@ -2,6 +2,13 @@
   <div class="container mt-5">
     <div class="d-flex flex-column justify-content-center align-items-center">
       <div class="card shadow-lg w-50">
+          <div class="text-center">
+            <img
+              :src="image"
+              width="150"
+              class="rounded-circle"
+            />
+          </div>
         <div class="card-body p-3">
           <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
           <Form @submit="handleRegister" :validation-schema="schema">
@@ -58,6 +65,7 @@
 </template>
 <script>
 import { Form, Field, ErrorMessage } from "vee-validate";
+import image from "../assets/logo.png";
 import * as yup from "yup";
 export default {
   name: "RegisterComponent",
@@ -83,6 +91,7 @@ export default {
       loading: false,
       message: "",
       schema,
+      image: image
     };
   },
   computed: {

@@ -4,13 +4,13 @@
       <div class="card shadow-lg w-50">
         <div class="text-center">
             <img
-              src="https://microbiology.ucr.edu/media/421/download?attachment"
-              width="90 "
+              :src="image"
+              width="150"
               class="rounded-circle"
             />
           </div>
         <div class="card-body p-3">
-          <h1 class="fs-4 card-title fw-bold mb-4 text-center">login</h1>
+          <h1 class="fs-4 card-title fw-bold mb-4 text-center">Login</h1>
           <Form @submit="handleLogin" :validation-schema="schema">
             <div class="form-group">
               <label for="username">Email</label>
@@ -36,7 +36,7 @@
                 {{ message }}
               </div>
             </div>
-            <div class="p-3 d-flex flex-row justify-content-center align-items-center"> <span>don´t have an account? </span> <router-link to="/register" class="text-decoration-none ml-2">Register</router-link> </div>
+            <div class="p-3 d-flex flex-row justify-content-center align-items-center"> <span>Don´t have an account? </span> <router-link to="/register" class="text-decoration-none ml-2">Register</router-link> </div>
           </Form>
         </div>
       </div>
@@ -46,6 +46,7 @@
 <script>
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
+import image from "../assets/main.jpg";
 export default {
   name: "LoginComponent",
   components: {
@@ -65,6 +66,7 @@ export default {
       loading: false,
       message: "",
       schema,
+      image: image
     };
   },
   computed: {

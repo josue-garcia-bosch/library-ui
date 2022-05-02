@@ -70,7 +70,8 @@
               }"
               >{{ book.lentDetail }}</span
             >
-            <span class="text-info font-weight-light" v-if="showAdminBoard"> {{ book.isLent ? book.lent.name : '' }}</span
+            <span class="text-info font-weight-light" v-if="showAdminBoard"> {{ book.isLent ? book.lent.name : '' }}</span>
+            <span class="text-info font-weight-light" v-if="!showAdminBoard && showIfIamTheBorrower(book) "> to me </span
             >
           </div>
           <div class="mt-5">
@@ -105,6 +106,9 @@ export default {
     };
   },
   methods: {
+    showIfIamTheBorrower(book){
+      return book.lent && book.lent._id === this.currentUser._id       
+    },
     async getInitialBooks() {
       const initialBooks = await BookService.getBooks(
         this.sort,
